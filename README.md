@@ -5,7 +5,6 @@ After doing the pre-task, select one person during Study, and present briefly.
 Describe how to approached the problem, what algorithms to used.  
 The audience ask and comments about that.
 
-* * *  
 # Morgorithm Study #1  
 ## *pre-task*  
   >Baekjoon 1915 - The largest square  
