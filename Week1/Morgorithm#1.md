@@ -10,11 +10,13 @@ Prepare to briefly describe the problems have solved.
 
 ## *Schedule*  
   >2019.07.10 (Wed) 16:00 ~ 19:00  
+  >Korea Polytech University E 519
   
-<!-- Add after schedule
 ### *participant*  
-  >
--->
+  >kjs28  
+  >SightStudio  
+  >tristan3716  
+
 ## *My work*
   >Baekjoon 1915 - <https://uk-coding.tistory.com/entry/백준BOJ-1915번-가장-큰-정사각형>  
   >Baekjoon 1596 - <https://uk-coding.tistory.com/entry/백준BOJ-1596번-영식함수>  
