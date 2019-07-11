@@ -75,7 +75,7 @@ Korea Polytech University E519
   >Requirements : Time complexity should be less than O(l^2)  
   >Category : Greedy  
   ><!-- Feel free to add comments anywhere -->  
-  >>***Comment*** *to OctopusSwellfish from Hyeon-uk*  
+  >>***Comment*** *to OctopusSwellfish from Hyeon-uk*
   >>그런 경우에 쓸 수 있는 BIG_INTEGER 자료형이 있어요.  
   >
   >두 BigInteger를 더하기 위해 필요한 시간 O(L)  
