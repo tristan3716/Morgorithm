@@ -55,7 +55,7 @@ Korea Polytech University E519
   >2x2 크기의 정사각형이 1로 구성되어있는지 검사  
   >검사 결과에서 다시 2x2 크기의 정사각형을 검사하면 3x3 크기의 정사각형을 찾을 수 있음  
   >  
-  >![The largest square](../images/week1_BOJ_1915_the_largest_square.png)  
+  >![The largest square](https://github.com/tristan3716/Algorithm/blob/master/images/week1_BOJ_1915_the_largest_square.png)  
   >DP를 적용하여 현재 위치에서 조사한 정사각형의 넓이를 저장  
     
   **Baekjoon 1596 - 영식 함수**  
@@ -83,7 +83,7 @@ Korea Polytech University E519
   >모든 경우에 대해 더하는 경우 반드시 *Time Limit Exceed*  
   >따라서 숫자를 더하지 않고, 모든 경우를 탐색할 필요성
   >
-  >![Split a number, testcase "1234567"](../images/week1_Codeforces_1181B_split_a_number.png)  
+  >![Split a number, testcase "1234567"](https://github.com/tristan3716/Algorithm/blob/master/images/week1_Codeforces_1181B_split_a_number.png)  
   >**두 수의 합은 중간에서 자를 때 가장 작다**  
   >순서대로 모든 가능한 위치에 대해 "두 수의 차이"를 저장하고 이를 비교.  
   >차이가 가장 작은 위치가 합이 가장 작은 경우  
