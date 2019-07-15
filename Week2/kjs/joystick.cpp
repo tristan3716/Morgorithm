@@ -121,7 +121,6 @@ int solution(std::string name)
 			}
 		}
 	}while (getAll < len);
-	std::cout << cnt_col<<"\n";
 	count = cnt_col + cnt_up;
 	return count;
 }
