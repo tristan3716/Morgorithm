@@ -33,9 +33,15 @@ int main()
 
 	int max_idx = get_max(trust_count, nodes);//제일 많이 신뢰받는 index찾음
 
-	for (auto i = v.at(max_idx).begin(); i < v.at(max_idx).end(); i++)//해당 id가 신뢰하는 id출력
-		std::cout << *i << " ";
-
+	if (v.at(max_idx).size() == 0)
+	{
+		std::cout << max_idx + 1 << " ";
+	}
+	else
+	{
+		for (auto i = v.at(max_idx).begin(); i < v.at(max_idx).end(); i++)//해당 id가 신뢰하는 id출력
+			std::cout << *i << " ";
+	}
 	return 0;
 }
 
