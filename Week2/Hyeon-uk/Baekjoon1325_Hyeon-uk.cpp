@@ -18,6 +18,7 @@
  *
  * ------------------------------------------------------------------------------------------------
  * 
+ * 서고리즘으로 풀어봐서 금방 푼 문제
  * 인접리스트로 방문가능한 모든 노드 -> 한 번에 해킹할 수 있는 컴퓨터
  * 모든 컴퓨터에서 출발하는 해킹을 수행해보고
  * 그 중 가장 높은 값!
@@ -28,22 +29,21 @@
 #include <vector>
 #include <algorithm>
 
-int hack(std::vector<std::vector<int>> &adj, std::vector<bool> &visit, int id, int n) {
-	int count = 1;
+int hack(std::vector<std::vector<int>> &adj, std::vector<bool> &visit, int id) {
 	int sum = 0;
 	visit[id] = true;
-	for (int i = 1; i < adj[id].size(); i++) {
+	for (unsigned int i = 1; i < adj[id].size(); i++) {
 		if (visit[adj[id][i]] == false)
-			sum += hack(adj, visit, adj[id][i], n);
+			sum += hack(adj, visit, adj[id][i]);
 	}
-	return count + sum;
+	return 1 + sum;
 }
 
 int main() {
-	int n, m; // Computer id, Link
+	int n, m;
 	std::cin >> n >> m;
-	std::vector<std::vector<int>> adj(n+1, std::vector<int>(1, 0));
-	for (int i = 0; i < m; i++) { 
+	std::vector<std::vector<int>> adj(n + 1, std::vector<int>(1, 0));
+	for (int i = 0; i < m; i++) {
 		int a, b;
 		std::cin >> a >> b;
 		adj[b].push_back(a);
@@ -52,7 +52,7 @@ int main() {
 	std::vector<int> id;
 	for (int cur_id = 1; cur_id <= n; cur_id++) { // O(n)
 		std::vector<bool> visit(n + 1, false);
-		int temp = hack(adj, visit, cur_id, n);
+		int temp = hack(adj, visit, cur_id);
 		if (max < temp) {
 			id.clear();
 			id.push_back(cur_id);
@@ -62,12 +62,9 @@ int main() {
 			id.push_back(cur_id);
 		}
 	}
-	std::sort(id.begin(), id.end());
 
 	for (unsigned int i = 0; i < id.size(); i++) {
-		std::cout << id[i];
-		if (i != id.size()-1)
-			std::cout << " ";
+		std::cout << id[i] << " ";
 	}
 
 	return 0;
