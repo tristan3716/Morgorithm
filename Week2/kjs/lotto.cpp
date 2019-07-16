@@ -27,10 +27,8 @@ int main()
 	for(auto count=v.begin();count<v.end();count++)
 	{
 		std::vector<int> input((*count));
-		sort(input.begin(), input.end());
 		// 0과1을 저장 할 벡터 생성
 		std::vector<int> ind;
-
 		// k=6, 6개를 뽑으니까
 		int k = 6;
 
@@ -44,7 +42,7 @@ int main()
 			ind.push_back(0);
 		}
 
-		sort(ind.begin(), ind.end());
+		//sort(ind.begin(), ind.end(),std::greater<int>());
 
 		//순열
 		do {
@@ -55,7 +53,7 @@ int main()
 				}
 			}
 			printf("\n");
-		} while (next_permutation(ind.begin(), ind.end()));
+		} while (prev_permutation(ind.begin(), ind.end()));
 		printf("\n");
 	}
 
