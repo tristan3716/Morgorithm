@@ -59,7 +59,7 @@ int solution(std::string name)
 				}
 				else
 				{
-					if (getAll - idx < len / 2)
+					if (getAll - idx <= len / 2)
 					{
 						cnt_col = cnt_col + (getAll - idx);
 						idx = getAll;
@@ -77,7 +77,7 @@ int solution(std::string name)
 			}
 			else
 			{
-				if (getAll-idx < len / 2)
+				if (getAll-idx <= len / 2)
 				{
 					cnt_col = cnt_col + (getAll - idx);
 					idx = getAll;
@@ -98,20 +98,16 @@ int solution(std::string name)
 			if (arr[len - 1] != 0&&idx==0)
 			{
 				idx = len - 1;
-				int check = 0;
 				arr[len - 1] = 0;
 				cnt_col++;
-				for (int i = 0; i < len; i++)
+				
+				for (int i = 0; i < len / 2; i++)
 				{
 					if (arr[i] != 0)
 					{
-						check = 1;
+						idx = 1;
+						cnt_col++;
 					}
-				}
-				if (check == 1)
-				{
-					idx = 0;
-					cnt_col++;
 				}
 				getAll++;
 			}
@@ -121,6 +117,7 @@ int solution(std::string name)
 			}
 		}
 	}while (getAll < len);
+
 	count = cnt_col + cnt_up;
 	return count;
 }
