@@ -14,13 +14,22 @@
  * 
  * 집합 S와 k가 주어졌을 때, 수를 고르는 모든 방법을 구하는 프로그램을 작성하시오.
  * 2019.07.11 00:17 ~ 00:22, 04:10 ~ 04:30
+ *
+ * ------------------------------------------------------------------------------------------------
+ * 
+ * 입력받고 집합 S에서 선택가능한 글자를 한개씩 선택하면서 재귀 호출
+ * 재귀의 깊이 = 선택한 문자의 개수
+ * 
+ * 같은 값을 두 번 선택하지 않기 위해서 매 재귀마다 방문여부를 판별하는 bool 벡터를 복사하여 넘겨준다
+ * 이미 방문(사용)한 값은 continue
+ * 결과값을 담은 컨테이너를 복사하여 Set의 요소를 하나 추가한 후 재귀호출한다
+ *
  * ------------------------------------------------------------------------------------------------ */
 
 #include <iostream>
 #include <vector>
 
-void makeSet(std::vector<int> set, std::vector<bool> visit, int k, std::vector<int> res, int q) {
-	//std::cout << "i : " << q << std::endl;
+void makeSet(std::vector<int> &set, std::vector<bool> visit, int k, std::vector<int> res, int q) {
 	if (k == 0) {
 		for (int i = 0; i < 6; i++) {
 			std::cout << res[i] << " ";
@@ -32,7 +41,6 @@ void makeSet(std::vector<int> set, std::vector<bool> visit, int k, std::vector<i
 			if (visit[i] == true)
 				continue;
 			std::vector<int> res_copy = res;
-			//std::cout << "add " << set[i] << std::endl;
 			res_copy.push_back(set[i]);
 			visit[i] = true;
 			makeSet(set, visit, k - 1, res_copy, i+1);
@@ -64,9 +72,3 @@ int main() {
 
 	return 0;
 }
-/*
-
-7 1 2 3 4 5 6 7
-0
-
-*/

@@ -5,7 +5,7 @@ int solution(std::string name);
 
 int main()
 {
-	std::string name="";
+	std::string name = "";
 	std::cin >> name;
 
 	int res = solution(name);
@@ -18,8 +18,10 @@ int main()
 int solution(std::string name)
 {
 	int len = name.length();
+	int cnt_up = 0;
+	int cnt_col = 0;
 	int count = 0;
-	int pos = 0;
+	int idx = 0;
 	int getAll = 0;
 
 	if (len == 0)
@@ -34,60 +36,88 @@ int solution(std::string name)
 		{
 			if (name[i] <= 'N')
 			{
-				count = count + (int)(name[i] - 'A');//위로 움직이는 경우
+				cnt_up = cnt_up + (int)(name[i] - 'A');//위로 움직이는 경우
 				arr[i]++;
 			}
 			else
 			{
-				count = count + (int)('Z' - name[i] + 1);//아래로 움직이는 경우
+				cnt_up = cnt_up + (int)('Z' - name[i] + 1);//아래로 움직이는 경우
 				arr[i]++;
 			}
 		}
 	}
 	do
 	{
-		if (arr[getAll] != 0)//바꿔야하는 알파벳 위치
+		if (arr[getAll] != 0)
 		{
-			if (pos == 0)
+			if (idx == 0)
 			{
-				if (getAll == pos)
+				if (getAll == idx)
 				{
+					arr[getAll] = 0;
 					getAll++;
 				}
 				else
 				{
-					if (getAll-pos<len/2)//최초위치에서 가까울경우
+					if (getAll - idx <= len / 2)
 					{
-						pos = pos+getAll - pos;
+						cnt_col = cnt_col + (getAll - idx);
+						idx = getAll;
+						arr[getAll] = 0;
 						getAll++;
 					}
-					else//최초위치에서 멀경우
+					else
 					{
-						pos = pos + (len - 1 - getAll + 1);
+						cnt_col = cnt_col + (len - getAll);
+						idx = getAll;
+						arr[getAll] = 0;
 						getAll++;
 					}
 				}
 			}
 			else
 			{
-				if (getAll - pos < len / 2)//이동후 재이동시 거리확인. 가까울경우
+				if (getAll-idx <= len / 2)
 				{
-					pos = pos + getAll - pos;
+					cnt_col = cnt_col + (getAll - idx);
+					idx = getAll;
+					arr[getAll] = 0;
 					getAll++;
 				}
-				else//멀경우
+				else
 				{
-					pos = pos + (len - getAll);
+					cnt_col = cnt_col + getAll;
+					idx = getAll;
+					arr[getAll] = 0;
 					getAll++;
 				}
 			}
 		}
 		else
 		{
-			getAll++;
+			if (arr[len - 1] != 0&&idx==0)
+			{
+				idx = len - 1;
+				arr[len - 1] = 0;
+				cnt_col++;
+				
+				for (int i = 0; i < len / 2; i++)
+				{
+					if (arr[i] != 0)
+					{
+						idx = 1;
+						cnt_col++;
+					}
+				}
+				getAll++;
+			}
+			else
+			{ 
+				getAll++;
+			}
 		}
-	} while (getAll < len);
+	}while (getAll < len);
 
-	count = count + pos;
+	count = cnt_col + cnt_up;
 	return count;
 }
