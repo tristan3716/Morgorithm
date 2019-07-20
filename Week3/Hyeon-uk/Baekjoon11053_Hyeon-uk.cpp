@@ -21,6 +21,7 @@ int main(void)
 	int n;
 	int *arr;
 	int *dp;
+	int max = 1;
 	scanf("%d", &n);
 	arr = (int *)malloc(sizeof(int) * n);
 	dp = (int *)calloc(n, sizeof(int));
@@ -34,11 +35,11 @@ int main(void)
 				dp[i] = dp[j] + 1;
 			}
 		}
+		if (max < dp[i])
+			max = dp[i];
 	}
 
-	for (int i = 0; i < n; i++) {
-		printf("%d", dp[i]);
-	}
+	printf("%d", max);
 
 	return 0;
 }
