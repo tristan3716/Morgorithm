@@ -2,7 +2,7 @@ package 등굣길_42898;
 
 import java.util.Scanner;
 
-public class Solution {
+public class Solution_42898 {
 	 public static int solution(int m, int n, int[][] puddles) {
 		 int arr[][] = new int[101][101];//최대 100개
 		 int arr1[][] = new int[101][101];
