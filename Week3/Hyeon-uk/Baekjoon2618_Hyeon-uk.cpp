@@ -14,61 +14,83 @@
  * 제출했는데 틀려따 ㅠ
  * 그리디가 그 순간에는 최적일 수 있어도, 전체적으론 손해일 수도 있다.
  * ㅎㅎ 넷플릭스나 봐야지
+ * 
+ * 그럼 답은 재귀다
+ * 양쪽 다 가보고 결과가 가까운 곳을 선택
+ * (양 쪽 모두 이동했다 가정하고, 가장 마지막 테스트케이스부터 거꾸로 거슬러올라옴)
+ * 근데 시간초과네 메모이제이션을 어떻게 해야할지 모르겠다
+ * 트레이싱도...
  * ------------------------------------------------------------------------------------------------ */
  
 #include <stdio.h>
 #include <malloc.h>
 
-int max(int a, int b) {
-	return a > b ? a : b;
+inline int mini(int a, int b) {
+	return a & ((a - b) >> 31) | b & (~(a - b) >> 31);
 }
 
-int getDistance(int src, int dst) {
-	int res = dst - src;
-	return res < 0 ? -res : res;
+int absi(int x) {
+	return (x ^ (x >> 31)) - (x >> 31);
+}
+
+inline int abs(int x) {
+	return x < 0 ? -x : x;
+}
+
+int getDistance(int ax, int ay, int bx, int by) {
+	return abs(ax - bx) + abs(ay - by);
+}
+
+int resolve(int level, int w, int **cases, int *record, int x1, int y1, int x2, int y2) {
+	if (level == w)
+		return 0; 
+	for (int i = 0; i < level; i = -~i) {
+		printf("\t");
+	}
+	printf("Current case : %d (%d, %d)\n", level, cases[level][0], cases[level][1]);
+	printf("police1 pos : (%d, %d)\n", x1, y1);
+	printf("police1 pos : (%d, %d)\n", x2, y2);
+	int cx = cases[level][0];
+	int cy = cases[level][1];
+	int dis1 = resolve(level + 1, w, cases, record, cx, cy, x2, y2) + getDistance(x1, y1, cx, cy);
+	int dis2 = resolve(level + 1, w, cases, record, x1, y1, cx, cy) + getDistance(x2, y2, cx, cy);
+
+	int ret = mini(dis1, dis2);
+	for (int i = 0; i < level; i++) {
+		printf("\t");
+	}
+	printf("%d : %d\n", 1, getDistance(x1, y1, cx, cy));
+	for (int i = 0; i < level; i++) {
+		printf("\t");
+	}
+	printf("%d : %d\n", 2, getDistance(x2, y2, cx, cy));
+	for (int i = 0; i < level; i++) {
+		printf("\t");
+	}
+	printf("ret : %d\n", ret);
+	return ret;
 }
 
 int main(void)
 {
 	int n;
 	int w;
+	int x, y;
 	scanf("%d %d", &n, &w);
 
-	int **distance_map = (int **)calloc(n + 1, sizeof(int *));
-	distance_map[0] = (int *)calloc(n + 1, sizeof(int));
-	
-	for (int i = 1; i <= n; i++) {
-		distance_map[i] = (int *)calloc(n + 1, sizeof(int));
-		for (int j = 1; j <= n; j++) {
-			distance_map[i][j] = max(distance_map[i][j - 1], distance_map[i - 1][j]) + 1;
-		}
-	}
-
-	int *record = (int *)malloc(w * sizeof(int));
-
-	int x, y;
-	int dis1, dis2;
-	int x1 = 1, y1 = 1;
-	int x2 = n, y2 = n;
-	int total_move = 0;
+	int **cases = (int **)malloc(n * sizeof(int *));
 	for (int i = 0; i < w; i++) {
 		scanf("%d %d", &x, &y);
-		dis1 = getDistance(distance_map[y][x], distance_map[y1][x1]);
-		dis2 = getDistance(distance_map[y][x], distance_map[y2][x2]);
-		if (dis1 < dis2) {
-			y1 = y;
-			x1 = x;
-			total_move += dis1;
-			record[i] = 1;
-		}
-		else {
-			y2 = y;
-			x2 = x;
-			total_move += dis2;
-			record[i] = 2;
-		}
+		cases[i] = (int *)malloc(2 * sizeof(int));
+		cases[i][0] = x;
+		cases[i][1] = y;
 	}
+	int *record = (int *)calloc(w, sizeof(int));
+
+	int total_move = resolve(0, w, cases, record, 1, 1, n, n);
+
 	printf("%d\n", total_move);
+
 	for (int i = 0; i < w; i++) {
 		printf("%d\n", record[i]);
 	}
