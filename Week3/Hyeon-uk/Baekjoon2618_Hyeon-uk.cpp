@@ -29,45 +29,46 @@
 #include <stdio.h>
 #include <malloc.h>
 
-inline int mini(int a, int b) {
-	return a & ((a - b) >> 31) | b & (~(a - b) >> 31);
-}
-inline int maxi(int a, int b) {
-	return b & ((a - b) >> 31) | a & (~(a - b) >> 31);
+int min(int a, int b) {
+	return a < b ? a : b;
 }
 
-inline int absi(int x) {
-	return (x ^ (x >> 31)) - (x >> 31);
+int max(int a, int b) {
+	return a < b ? b : a;
+}
+
+int abs(int x) {
+	return x < 0 ? -x : x;
 }
 
 int getDistance(int ax, int ay, int bx, int by) {
-	return absi(ax - bx) + absi(ay - by);
+	return abs(ax - bx) + abs(ay - by);
 }
 
-int resolve(int w, int **dp, int **cases, int **record, int a, int b) {
-	int level = maxi(a, b) + 1;
+int resolve(int w, int **dp, int **cases, int **record, int a_pos, int b_pos) {
+	int level = max(a_pos, b_pos) + 1;
 
 	if (level == w)
 		return 0;
 
-	else if (dp[a][b] != -1) {
-		return dp[a][b];
+	else if (dp[a_pos][b_pos] != -1) {
+		return dp[a_pos][b_pos];
 	}
 
 	int cx = cases[level][0];
 	int cy = cases[level][1];
-	int dis1 = resolve(w, dp, cases, record, level, b) + getDistance(cases[a][0], cases[a][1], cx, cy);
-	int dis2 = resolve(w, dp, cases, record, a, level) + getDistance(cases[b][0], cases[b][1], cx, cy);
+	int dis1 = resolve(w, dp, cases, record, level, b_pos) + getDistance(cases[a_pos][0], cases[a_pos][1], cx, cy);
+	int dis2 = resolve(w, dp, cases, record, a_pos, level) + getDistance(cases[b_pos][0], cases[b_pos][1], cx, cy);
 
-	dp[a][b] = mini(dis1, dis2);
-	if (mini(dis1, dis2) ^ dis1) {
-		record[a][b] = 2;
+	dp[a_pos][b_pos] = min(dis1, dis2);
+	if (min(dis1, dis2) ^ dis1) {
+		record[a_pos][b_pos] = 2;
 	}
 	else {
-		record[a][b] = 1;
+		record[a_pos][b_pos] = 1;
 	}
 
-	return dp[a][b];
+	return dp[a_pos][b_pos];
 }
 
 int main(void)
@@ -108,14 +109,14 @@ int main(void)
 	}
 	int total_move = resolve(w + 2, dp, cases, record, 0, 1);
 
-	printf("%d\n", total_move);
+	//printf("%d\n", total_move);
 
-	for (int x = 0, y = 1; maxi(x, y) + 1 < w + 2; ) {
-		printf("%d\n", record[x][y]);
-		if (record[x][y] == 2)
-			y = maxi(x, y) + 1;
+	for (int a = 0, b = 1; max(a, b) + 1 < w + 2; ) {
+		printf("%d\n", record[a][b]);
+		if (record[a][b] == 2)
+			b = max(a, b) + 1;
 		else
-			x = maxi(x, y) + 1;
+			a = max(a, b) + 1;
 	}
 
 	return 0;
