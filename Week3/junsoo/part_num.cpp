@@ -1,3 +1,5 @@
+#pragma warning(disable:4996)
+
 #include<iostream>
 #include<vector>
 #include<string>
@@ -19,17 +21,33 @@ int main()
 		v.push_back(atoi(str));//숫자 입력
 		str = strtok(NULL, " ");
 	}
-	for (auto i = v.begin(); i < v.end(); i++)
+	int idx = 0;
+	for (int i = 0; i < v.size(); i++)
 	{
-		if (part.size() == 0)//부분수열0일때
+		if (v[idx] > v[i])
 		{
-			part.push_back(*i);
+			idx = i;
 		}
-		else//그외
+	}
+	if (idx < v.size() / 2)
+	{
+		part.push_back(v[idx]);
+		for (int i = idx; i < v.size(); i++)
 		{
-			if (*i > part[part.size()-1])//부분수열 끝과 비교, 크면 삽입
+			if (v[i] > part[part.size() - 1])//부분수열 끝과 비교, 크면 삽입
 			{
-				part.push_back(*i);
+				part.push_back(v[i]);
+			}
+		}
+	}
+	else
+	{
+		part.push_back(v[0]); 
+		for (int i = 0; i < v.size(); i++)
+		{
+			if (v[i] > part[part.size() - 1])//부분수열 끝과 비교, 크면 삽입
+			{
+				part.push_back(v[i]);
 			}
 		}
 	}
