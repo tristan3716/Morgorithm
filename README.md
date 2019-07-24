@@ -41,3 +41,16 @@ The audience ask and comments about that.
 
 ## *Schedule*  
 + 2019.07.24 (Wed) 16:00 ~ 19:00
+
+# Morgorithm Study #4
+## *pre-task*
++ Baekjoon 10610 - 30
++ Baekjoon 2156 -  Sampling wine
++ Baekjoon 1912 - Consecutive sum
++ Baekjoon 2234 - Bailey
++ Baekjoon 5211 - A Minor scale & C Major scale
+
+
+## *Schedule*  
++ 2019.07.31 (Wed) 16:00 ~ 19:00
+
