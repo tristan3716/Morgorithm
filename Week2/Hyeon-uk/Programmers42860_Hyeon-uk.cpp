@@ -62,6 +62,27 @@
  * 
  * 이거 그리디 맞나?
  *
+ * ------------------------------------------------------------------------------------------------
+ * 
+ * 진짜 진짜 유레카한 풀이과정 생각함
+ * 그리디는 여전히 아닌데.. 맞나? 암튼.
+ * 기존 문제점 -> 문제의 중앙을 기준으로 좌우측 이동거리를 측정했기에 긴쪽이 중앙선을 넘어가면 제대로 측정이 안됨
+ * 두개의 vector를 이용해서 각 지점까지의 우측방향 이동거리, 좌측방향 이동거리를 저장
+ * right 벡터에는 맨 앞에 0을 삽입(좌측으로만 움직이는 경우)
+ *  left 벡터에는 맨 뒤에 0을 삽입(우측으로만 움직이는 경우)
+ * 모든 케이스에 대해 (r은 우측으로 이동한 마지막 위치, l은 좌측으로 이동한 마지막 위치) 2*min(l, r) + max(l, r)을 수행
+ * 가장 작은 값이 최적해
+ * 
+ *	e.g.
+ *	ZAAZAAZA
+ *	01234567 (각 지점까지의 우측방향 이동거리)
+ *	87654321 (각 지점까지의 좌측방향 이동거리)
+ *	vector r = {0} + {0, 3, 6}
+ *	vector l =       {8, 5, 2} + {0}
+ *	r = {0,0,3,6}
+ *	l = {8,5,2,0}
+ *	d = {8,5,7,6}
+ * 
  * ------------------------------------------------------------------------------------------------ */
 
 
@@ -73,109 +94,36 @@
 using namespace std;
 
 int solution(string name) {
-	int name_length = name.size();
-
-	int vertical_up = 0;
-	int vertical_down = 0;
-
-	int total_move = 0;
-
-	int count = 0;
-	for (int i = 0; i < name_length; i++) {
-		if (name[i] != 'A')
-			count++;
-	}
-
-	for (int i = 0; i < name_length; i++){
-		//std::cout << name[i] << std::endl;
+	int vertical[26] = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1 };
+	int v_move = 0;
+	int length = name.length();
+	vector<int> right;
+	vector<int> left;
+	right.push_back(0);
+	for (auto i = 0; i < length; i++) {
+		cout << vertical[name[i] - 'A'] << " ";
+		v_move += vertical[name[i] - 'A'];
 		if (name[i] != 'A') {
-			vertical_up = name[i] - 'A';
-			vertical_down = (26 - vertical_up) % 26;
-			total_move += vertical_up < vertical_down ? vertical_up : vertical_down;
-		}
-
-		//if (i >= name_length - 1 || count == 0)
-		//	break;
-
-		//for (horizontal_pos_right = i + 1; name[horizontal_pos_right % name_length] == 'A'; horizontal_pos_right++);
-		//for (horizontal_pos_left = i - 1; name[(horizontal_pos_left + name_length) % name_length] == 'A'; horizontal_pos_left--);
-		//horizontal_pos_right = horizontal_pos_right % name_length;
-		//horizontal_pos_left = (horizontal_pos_left + name_length) % name_length;
-
-		//int right_dis = (horizontal_pos_right - i + name_length) % name_length;
-		//int left_dis = (i - horizontal_pos_left + name_length) % name_length;
-
-		//int distance;
-		//int direction = 0;
-		//if (right_dis <= left_dis) {
-		//	distance = right_dis;
-		//	direction = 1;
-		//}
-		//else {
-		//	distance = left_dis;
-		//	direction = 0;
-		//}
-
-		//if (name[i] != 'A' || (name[i] != 'A' && i==0 )) {
-		//	if (direction == 1) {
-		//		std::cout << "Add_r " << distance << std::endl;
-		//		total_move_r += distance;
-		//	}
-		//	else {
-		//		std::cout << "Add_l " << distance << std::endl;
-		//		total_move_l += distance;
-		//	} // A AABBBBB ABAAAAA
-		//	name[i] = 'A';
-		//	std::cout << "count--" << std::endl;
-		//	count--;
-		//}
-		//i += 1;
-	}
-
-	int right_only_move = 0;
-	int right_only_count = count;
-
-	int left_only_move = 0;
-	int left_only_count = count;
-
-	int turn_move = 0;
-	int turn_left_move = 0;
-	int turn_right_move = 0;
-
-	for (int i = 0; (right_only_count | left_only_count); i++) {
-		if (name[i] != 'A') {
-			right_only_count--;
-		}
-		if (right_only_count) {
-			right_only_move++;
-		}
-
-		if (left_only_count) {
-			left_only_move++;
-		}
-		if (name[name_length - i - 1] != 'A') {
-			left_only_count--;
-		}
-
-		if (i < name_length/2) {
-			if (i != 0) {
-				if (name[i] != 'A') {
-					turn_right_move = i;
-				}
-			}
-			if (name[name_length - i - 1] != 'A') {
-				turn_left_move = i + 1;
-			}
+			right.push_back(i);
+			left.push_back(length - i);
 		}
 	}
-	//std::cout << turn_left_move << std::endl;
-	//std::cout << turn_right_move << std::endl;
-	turn_move = turn_left_move < turn_right_move ? turn_left_move * 2 + turn_right_move : turn_left_move + turn_right_move * 2;
+	left.push_back(0);
 
-	std::cout << turn_move << std::endl;
-	std::cout << left_only_move << std::endl;
-	std::cout << right_only_move << std::endl;
-	return total_move + std::min({turn_move, left_only_move, right_only_move});
+	for (auto i : right) {
+		cout << i << " ";
+	}
+	
+	int min = right[0] * 2 + left[0];
+	int dis;
+	for (auto i = 1; i < right.size(); i++) {
+		dis = right[i] < left[i] ? right[i] * 2 + left[i] : right[i] + left[i] * 2;
+		if (dis < min) {
+			min = dis;
+		}
+	}
+
+	return min + v_move;
 }
 
 #include <iostream>
@@ -202,7 +150,7 @@ int main()
 
 	/* 테스트케이스를 삽입하는 부분 */
 	testcase.push_back({ "JEROEN", 56 });
-	testcase.push_back({ "JAN", 23 });
+	testcase.push_back({ "BAC", 23 });
 	testcase.push_back({ "ABAAAAAAAAABB", 7 });
 	testcase.push_back({ "AZAAAZ", 5 });
 	testcase.push_back({ "ABABAAAAAAAAAAAABA", 10 });
@@ -220,6 +168,9 @@ int main()
 	testcase.push_back({ "AZZZAAAAAAAZZZ", 15 });
 	testcase.push_back({ "ZZZZAAAAAAAZZZ", 16 });
 	testcase.push_back({ "AAAAZAAZAAA", 9 });
+	testcase.push_back({ "AAAZAAZA", 7 });
+	testcase.push_back({ "AZAAAZ", 5 });
+	testcase.push_back({ "ABAAABBBBBBB", 17 });
 
 	for (unsigned int i = 0; i < testcase.size(); i++) {
 		std::cout << "> Test No." << i + 1 << " ----------------------------------------" << std::endl;
