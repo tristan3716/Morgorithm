@@ -5,7 +5,7 @@ __inline int max(int a, int b) {
 }
 
 int main(void) {
-	int arr[100001];
+	int tmp;
 	int n;
 	unsigned int i;
 	int sum = 0;
@@ -13,13 +13,13 @@ int main(void) {
 
 	scanf("%d", &n);
 	for (i = n; i; --i) {
-		scanf("%d", &arr[i]);
+		scanf("%d", &tmp);
 
-		if (arr[i] > sum + arr[i]) {
-			sum = arr[i];
+		if (tmp > sum + tmp) {
+			sum = tmp;
 		}
 		else {
-			sum += arr[i];
+			sum += tmp;
 		}
 		m = max(sum, m);
 	}
