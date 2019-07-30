@@ -20,12 +20,12 @@ Korea Polytech University G404
   
 ## *Studies*
 <!-- 스터디 진행간 토의한 내용, 피드백 결과 등을 기록 -->
-  >16시부터 과제에 대한 상호 피드백  
-  >스터디중 애매하게 남는 1시간을 어떻게 활용할지 토의  
-  >+ 매주 돌아가며 강의 진행하기로 결정  
-  >+ 강의 주제 선정  
-  >
-  >결정 후 남은 시간동안 시간복잡도에 대한 강의 진행
+  16시부터 과제에 대한 상호 피드백  
+  스터디중 애매하게 남는 1시간을 어떻게 활용할지 토의  
+  + 매주 돌아가며 강의 진행하기로 결정  
+  + 강의 주제 선정  
+  
+  결정 후 남은 시간동안 시간복잡도에 대한 강의 진행
   
 <!-- Input Size, Complexity requirements, Algorithm Category, Descriptions -->
 **[Baekjoon 2618 - 경찰차](https://www.acmicpc.net/problem/2618)**  
