@@ -50,6 +50,7 @@ int main() {
 	}
 	int max = -1;
 	std::vector<int> id;
+	id.reserve(n);
 	for (int cur_id = 1; cur_id <= n; cur_id++) { // O(n)
 		std::vector<bool> visit(n + 1, false);
 		int temp = hack(adj, visit, cur_id);
