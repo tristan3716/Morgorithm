@@ -3,38 +3,39 @@
 
 int main()
 {
-	std::string input;
-	std::cin >> input;
+	std::string s;
 
-	int major = 0, minor = 0;
-	char* str = new char[input.length() + 1];
-	strcpy(str, input.c_str());
+	std::cin >> s;
 
-	str = strtok(str, "|");
+	int A = 0, C = 0;
 
-	while (str != NULL)
+	for (int i = 0; i < s.size(); ++i)
 	{
-		if (str[0] == 'C' || str[0] == 'G'||str[0]=='F')
+		if (i == 0 || s[i - 1] == '|')
 		{
-			major++;
+			if (s[i] == 'A' || s[i] == 'D' || s[i] == 'E')
+				A++;
+
+			if (s[i] == 'C' || s[i] == 'F' || s[i] == 'G')
+				C++;
 		}
-		else
-		{
-			minor++;
-		}
-		str = strtok(NULL, "|");
 	}
-	if (major > minor)
-		std::cout << "C-major";
-	else if (major == minor)
+
+
+	if (A == C)
+
 	{
-		if (input[input.size()-1] == 'C' || input[input.size() - 1] == 'G' || input[input.size() - 1] == 'F')
-			std::cout << "C-major";
-		else
-			std::cout << "A-minor";
+
+		A += (s[(int)s.size() - 1] == 'A');
+		C += (s[(int)s.size() - 1] == 'C');
+
 	}
+
+	if (A > C)
+		std::cout << "A-minor\n";
+
 	else
-		std::cout << "A-minor";
+		std::cout << "C-major\n";
 
 	return 0;
 }

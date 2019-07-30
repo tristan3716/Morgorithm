@@ -12,33 +12,33 @@ bool desc(int a, int b)
 
 int main()
 {
-	std::vector<int> v;
-	char* str=(char*)calloc(6,sizeof(char));
-	scanf("%s", str);
-	int i = 0;
-	while (str[i] != '\0')
+	std::string N;
+
+	std::cin >> N;
+
+	long long sum = 0;//¡÷¿«
+	bool zero = false;
+
+	for (int i = 0; i < N.size(); i++)
 	{
-		v.push_back(int(str[i]) - '0');
-		i++;
+		sum += (N[i] - '0');
+		if (!(N[i] - '0'))
+		{
+			zero = true;
+		}
 	}
 
-	if (std::find(v.begin(), v.end(), 0) == v.end())
-	{
-		std::cout << -1;
-		return 0;
-	}
+	if (sum % 3 || !zero)
+		std::cout << -1 << "\n";
+
 	else
+
 	{
-		if (std::accumulate(v.begin(), v.end(), 0) % 3 == 0)
-		{
-			std::sort(v.begin(), v.end(), desc);
-			for (auto i = v.begin(); i < v.end(); i++)
-				std::cout << *i;
-		}
-		else
-		{
-			std::cout << -1;
-		}
+
+		std::sort(N.begin(), N.end(), desc);
+
+		std::cout << N << "\n";
+
 	}
 	return 0;
 }
