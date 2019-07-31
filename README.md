@@ -52,4 +52,15 @@ The audience ask and comments about that.
   + Baekjoon 5211 - A Minor & C Major
 
 ## *Schedule*  
-  + 2019.07.31 (Wed) 16:00 ~ 19:00
++ 2019.07.31 (Wed) 16:00 ~ 19:00
+
+# Morgorithm Study #5
+## *pre-task*
++ Baekjoon 10835 - Card game
++ Baekjoon 11657 -  Timemachine
++ Baekjoon 1019 - Page of book
++ Baekjoon 2146 - Make a bridge
++ Programmers - Visited length
+
+## *Schedule*  
++ 2019.08.07 (Wed) 16:00 ~ 19:00
