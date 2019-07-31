@@ -1,43 +1,29 @@
 #include<iostream>
 #include<vector>
 #include<string>
+#include<algorithm>
+#include<numeric>
 
 int main()
 {
-	int len;
-	std::cin >> len;
-	char* str = (char*)malloc(sizeof(char) * (len * len));
-	std::vector<int> v;
-	int result = 0;
-	std::cin.ignore();
-	std::cin.getline(str, len * len);
+	int n;
+	std::cin >> n;
+	std::vector<int> v(n, 0);
+	std::vector<int> d(n, 0);
+	int res = -1000;
 
-	char* input = strtok(str, " ");
-	while(input!=NULL)
+	for (int i = 0; i < n; i++)
 	{
-		v.push_back(atoi(input));
-		input = strtok(NULL, " ");
+		scanf("%d", &v[i]);
 	}
-	int idx = 0;
-	for (int i = 0; i < v.size(); i++)
-	{
-		if (v[idx] < v[i])
-		{
-			idx = i;
-		}
+
+	d[0] = v[0];
+	for (int i = 1; i < n; i++) {
+		d[i] = std::max(d[i - 1] + v[i], v[i]);
+		res = std::max(res, d[i]);
 	}
-	if (v[idx - 1] > 0)
-	{
-		result = v[idx] + v[idx - 1];
-	}
-	else if (v[idx + 1] > 0)
-	{
-		result = v[idx] + v[idx + 1];
-	}
-	else
-	{
-		result = v[idx];
-	}
-	std::cout << result;
+	res = std::max(res, d[0]);
+
+	std::cout << res;
 	return 0;
 }
