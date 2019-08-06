@@ -1,63 +1,50 @@
-#include<iostream>
+#include <iostream>
+#include <algorithm>
+#include <cstring> 
 
-int main()
+const int MAX = 2000;
+int N;
+int leftCard[MAX], rightCard[MAX];
+int cache[MAX][MAX];
+
+int maxScore(int leftIdx, int rightIdx)
 {
-	int size;
-	int res = 0;
-	std::cin >> size;
-	int* left = (int*)calloc(size, sizeof(int));
-	int* right = (int*)calloc(size, sizeof(int));
+	//기저 사례: 두 더미의 카드 중 하나라도 남은 카드가 없다면
+	if (leftIdx >= N || rightIdx >= N)
+		return 0;
 
-	for (int i = 0; i < size; i++)
-		std::cin >> left[i];
-	for (int i = 0; i < size; i++)
-		std::cin >> right[i];
+	int& result = cache[leftIdx][rightIdx];
 
-	int idx_l = 0, idx_r = 0;
-	
-	while (idx_l < size && idx_r < size)
-	{
-		if (left[idx_l] > right[idx_r])
-		{
-			res = res + right[idx_r];
-			idx_r++;
-		}
-		else
-		{
-			if (left[idx_l+1] > right[idx_r])
-			{
-				idx_l++;
-			}
-			else
-			{
-				int pos = 0;
-				bool both_drow = false;
-				for (int i = idx_l; i < size; i++)
-				{
-					if (left[i] > right[idx_r])
-					{
-						pos = i;
-						break;
-					}
-					else if (left[i] == right[idx_r])
-					{
-						both_drow = true;
-						break;
-					}
-				}
-				if (both_drow)
-				{
-					idx_l++;
-					idx_r++;
-				}
-				else
-				{
-					idx_l = pos;
-				}
-			}
-		}
-	}
+	if (result != -1)
+		return result;
 
-	std::cout << res;
+	result = 0;
+
+	//왼쪽 덱에 있는 카드가 오른쪽에 있는 카드보다 클 경우 고려사항 3가지
+	if (leftCard[leftIdx] > rightCard[rightIdx])
+		result += std::max(rightCard[rightIdx] + maxScore(leftIdx, rightIdx + 1), 
+			std::max(maxScore(leftIdx + 1, rightIdx), maxScore(leftIdx + 1, rightIdx + 1)));
+
+	//그 외에는 고려사항 2가지
+
+	else
+		result += std::max(maxScore(leftIdx + 1, rightIdx), maxScore(leftIdx + 1, rightIdx + 1));
+
+	return result;
+}
+
+int main(void)
+{
+	std::cin >> N;
+
+	for (int i = 0; i < N; i++)
+		std::cin >> leftCard[i];
+
+	for (int i = 0; i < N; i++)
+		std::cin >> rightCard[i];
+
+	memset(cache, -1, sizeof(cache));
+	std::cout << maxScore(0, 0) << std::endl;
+
 	return 0;
 }
