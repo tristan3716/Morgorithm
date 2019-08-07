@@ -52,7 +52,7 @@ enum Direction {
 typedef struct {
 	int x;
 	int y;
-	int room_number;
+	int id;
 } Pos;
 
 typedef struct {
@@ -73,7 +73,7 @@ __inline void push(int x, int y, int rn, Queue *q) {
 	qp[idx].x = x;
 	qp[idx].y = y;
 	q->last++;
-	qp[idx].room_number = rn;
+	qp[idx].id = rn;
 }
 
 __inline void pop(int *x, int *y, int *rn, Queue *q) {
@@ -82,7 +82,7 @@ __inline void pop(int *x, int *y, int *rn, Queue *q) {
 	*x = qp[idx].x;
 	*y = qp[idx].y;
 	q->first++;
-	*rn = qp[idx].room_number;
+	*rn = qp[idx].id;
 }
 
 __inline int isEmpty(Queue q) {
