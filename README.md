@@ -64,3 +64,17 @@ The audience ask and comments about that.
 
 ## *Schedule*  
 + 2019.08.07 (Wed) 16:00 ~ 19:00
+
+# Morgorithm Study #6
+## *pre-task*
+### 2017 Kakao blind recruitment round 1
++ Secret map
++ Dart game
++ Cache
++ Shuttle bus
++ New clustering
++ Friends 4 block
++ Chuseok traffic
+
+## *Schedule*  
++ 2019.08.07 (Wed) 16:00 ~ 19:00
