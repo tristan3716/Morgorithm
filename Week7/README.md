@@ -14,7 +14,7 @@ The audience ask and comments about that.
 + C 숏코딩
 + D 부스터
 + E 음악 추천
-+ F 프로도의 100일 준비
++ F 프로도의 100일 준비  
 \+ 덤으로 백준 14502 - 연구소
 
 ## *Schedule*  
