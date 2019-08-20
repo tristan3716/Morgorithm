@@ -60,14 +60,24 @@ int main()
 			}
 			else
 			{
-				if ((std::abs(checks[pt1 - 1].first - checks[pt2 - 1].first) <= hp) ||
-					(std::abs(checks[pt1 - 1].second - checks[pt2 - 1].second) <= hp))
+				int start_x = checks[pt1 - 1].first;
+				int start_y = checks[pt1 - 1].second;
+
+				for (auto i = checks.begin(); i < checks.end(); i++)
 				{
-					answer[idx] = "YES";
+					if (std::abs(start_x - (*i).first) < hp)
+					{
+						answer[idx] = "YES";
+						break;
+					}
 				}
-				else
+				for (auto i = checks.begin(); i < checks.end(); i++)
 				{
-					answer[idx] = "NO";
+					if (std::abs(start_y - (*i).second) < hp)
+					{
+						answer[idx] = "YES";
+						break;
+					}
 				}
 			}
 		}
