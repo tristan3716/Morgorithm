@@ -77,4 +77,31 @@ The audience ask and comments about that.
 + Chuseok traffic
 
 ## *Schedule*  
-+ 2019.08.07 (Wed) 16:00 ~ 19:00
++ 2019.08.14 (Wed) 16:00 ~ 19:00
+
+# Morgorithm Study #7
+## pre-task
+### Kakao code festival 2018 online
++ Reward hunter
++ Dolls
++ Code golf
++ Booster
++ Music Recommendation
++ Prodo's D+100
++ Laboratory
+
+## *Schedule*  
++ 2019.08.21 (Wed) 16:00 ~ 19:00
+
+# Morgorithm Study #8
+## pre-task
+### 2018 Kakao blind recruitment round 1
++ Openchatting
++ Candidate key
++ Muzi's Mukbang live
++ Way find game
++ Matching score
++ Block game
+
+## *Schedule*  
++ 2019.08.27 (Wed) 16:00 ~ 19:00
