@@ -1,21 +1,35 @@
+<!-- Title Start -->
 # Algorithm  
-Morgorithm Study  
+Morgorithm Study 
 
 After doing the pre-task, select one person during Study, and present briefly.  
 Describe how to approached the problem, what algorithms to used.  
 The audience ask and comments about that.
-
-# Morgorithm Study #1
-## *pre-task*
+<!-- Title End -->
+<!-- Week 1 Start -->
+# Morgorithm Study #1 <!-- Week's Number -->
+<!-- sub-title : 필요하다면 부제목이 추가될 수 있음 -->
+### *pre-task* <!-- 사전에 주어진 과제, 경우에 따라 전부, 혹은 일부를 풀어오도록 요구 -->
+<!-- 문제 작성 형식 :
+  + (문제 출처) (문제 번호) - (문제 이름)
+  + (문제 출처) (문제 번호) - (문제 이름)
+  + (문제 출처) (문제 번호) - (문제 이름)
+                . . .
+문제 테마가 명확한 경우(코딩테스트, 대회 등), 문제 이름만 작성 -->
   + Baekjoon 1915 - The largest square
   + Baekjoon 1596 - Young-sik function
   + Codeforces 1181B - Split a number
 
-## *Schedule*
+### *Schedule*
+<!-- 스케줄
+  + YYYY.MM.DD (EEE) hh:mm ~ hh:mm
+  수행 예정인 시간을 미리 기록하되, 예정에서 벗어나 진행하게 되었다면 수정 -->
   + 2019.07.10 (Wed) 16:00 ~ 19:00
+<!-- Week 1 End -->
 
+<!-- Week 2 Start -->
 # Morgorithm Study #2
-## *pre-task*
+### *pre-task*
   + Baekjoon 1325 - Efficient hacking
   + Baekjoon 6603 - Lotto
   + Baekjoon 11399 - ATM
@@ -23,16 +37,19 @@ The audience ask and comments about that.
   + Programmers - Joystick
   + Programmers - Way to school
 
-## *Schedule*
+### *Schedule*
   + 2019.07.17 (Wed) 16:00 ~ 19:00
+<!-- Week 2 End -->
 
+<!-- Week 3 Start -->
 # Morgorithm Study #3
-## *practice*
+(DP trainning)
+### *practice*
   + Baekjoon 1003 - Fibonacci function
   + Baekjoon 9095 - Add 1, 2 and 3
   + Baekjoon 2193 - Fi-binary number
   + Baekjoon 1463 - Make 1
-## *pre-task*
+### *pre-task*
   + Baekjoon 2618 - Squad car
   + Baekjoon 11053 - Longest increasing subsequence (LIS)
   + Baekjoon 5549 - Planet exploration
@@ -40,71 +57,78 @@ The audience ask and comments about that.
   + Programmers - Failure rate
   - Programmers - Way to school (Review)
 
-## *Schedule*  
+### *Schedule*  
   + 2019.07.24 (Wed) 16:00 ~ 19:00
+<!-- Week 3 End -->
 
+<!-- Week 4 Start -->
 # Morgorithm Study #4
-## *pre-task*
+### *pre-task*
   + Baekjoon 10610 - 30
   + Baekjoon 2156 - Sampling wine
   + Baekjoon 1912 - Consecutive sum
   + Baekjoon 2234 - The Castle
   + Baekjoon 5211 - A Minor & C Major
 
-## *Schedule*  
-+ 2019.07.31 (Wed) 16:00 ~ 19:00
+### *Schedule*  
+  + 2019.07.31 (Wed) 16:00 ~ 19:00
+<!-- Week 4 End -->
 
+<!-- Week 5 Start -->
 # Morgorithm Study #5
-## *pre-task*
-+ Baekjoon 10835 - Card game
-+ Baekjoon 11657 -  Timemachine
-+ Baekjoon 1019 - Page of book
-+ Baekjoon 2146 - Make a bridge
-+ Programmers - Visited length
+### *pre-task*
+  + Baekjoon 10835 - Card game
+  + Baekjoon 11657 -  Timemachine
+  + Baekjoon 1019 - Page of book
+  + Baekjoon 2146 - Make a bridge
+  + Programmers - Visited length
 
-## *Schedule*  
-+ 2019.08.07 (Wed) 16:00 ~ 19:00
+### *Schedule*  
+  + 2019.08.07 (Wed) 16:00 ~ 19:00
+<!-- Week 5 End -->
 
+<!-- Week 6 Start -->
 # Morgorithm Study #6
-## *pre-task*
-### 2017 Kakao blind recruitment round 1
-+ Secret map
-+ Dart game
-+ Cache
-+ Shuttle bus
-+ New clustering
-+ Friends 4 block
-+ Chuseok traffic
+(2017 Kakao blind recruitment round 1)
+### *pre-task*
+  + Secret map
+  + Dart game
+  + Cache
+  + Shuttle bus
+  + New clustering
+  + Friends 4 block
+  + Chuseok traffic
 
-## *Schedule*  
-+ 2019.08.07 (Wed) 16:00 ~ 19:00
+### *Schedule*  
+  + 2019.08.14 (Wed) 16:00 ~ 19:00
+<!-- Week 6 End -->
 
+<!-- Week 7 Start -->
 # Morgorithm Study #7
-## *pre-task*
-**카카오 코드 페스티벌 2018 예선**
-**백준**
-+ A 상금헌터
-+ B 인형들
-+ C 숏코딩
-+ D 부스터
-+ E 음악 추천
-+ F 프로도의 100일 준비  
-\+ 덤으로 백준 14502 - 연구소
+(Kakao code festival 2018 online)
+### pre-task
+  + Reward hunter
+  + Dolls
+  + Code golf
+  + Booster
+  + Music Recommendation
+  + Prodo's D+100
+  + Baekjoon 14502 - Laboratory
 
-## *Schedule*  
-+ 2019.08.21 (Wed) 16:00 ~ 19:00
+### *Schedule*  
+  + 2019.08.21 (Wed) 16:00 ~ 19:00
+<!-- Week 7 End -->
 
+<!-- Week 8 Start -->
 # Morgorithm Study #8
-## *pre-task*
-**카카오 코드 페스티벌 2018**
-**프로그래머스**
-+ 오픈채팅방
-+ 실패율
-+ 후보키
-+ 무지의 먹방 라이브
-+ 길 찾기 게임
-+ 매칭 점수  
+(2018 Kakao blind recruitment round 1)
+### pre-task
+  + Openchatting
+  + Candidate key
+  + Muzi's Mukbang live
+  + Way find game
+  + Matching score
+  + Block game
 
-## *Schedule*  
-+ 2019.08.28 (Wed) 16:00 ~ 19:00
-
+### *Schedule*  
+  + 2019.08.27 (Wed) 16:00 ~ 19:00
