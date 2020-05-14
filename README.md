@@ -1,11 +1,12 @@
-<!-- Title Start -->
+<!-- Header Start -->
 # Algorithm  
-Morgorithm Study 
+**Weakness of attitude becomes weakness of character**
 
 After doing the pre-task, select one person during Study, and present briefly.  
 Describe how to approached the problem, what algorithms to used.  
 The audience ask and comments about that.
-<!-- Title End -->
+<!-- Header End -->
+
 <!-- Week 1 Start -->
 # Morgorithm Study #1 <!-- Week's Number -->
 <!-- sub-title : 필요하다면 부제목이 추가될 수 있음 -->
@@ -132,3 +133,5 @@ The audience ask and comments about that.
 
 ### *Schedule*  
   + 2019.08.27 (Wed) 16:00 ~ 19:00
+  
+<!-- 이후 일정은 여러 사정으로 비정기적으로 진행하고, 소스를 업로드하지 않았음 -->
